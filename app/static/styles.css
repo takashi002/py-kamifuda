@@ -92,18 +92,39 @@ footer {
 }
 
 .hero {
-  padding: clamp(3rem, 12vh, 6.5rem) 0 4rem;
-  max-width: 18em;
+  padding: clamp(2.5rem, 10vh, 5.5rem) 0 4rem;
+  max-width: 22em;
+}
+
+.hero-brand {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(4.2rem, 14vw, 7.5rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  color: var(--ink);
+  animation: rise 0.95s var(--ease) both;
+}
+
+.hero-roma {
+  margin: 0.35rem 0 1.4rem;
+  color: var(--accent);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  animation: rise 1s var(--ease) 0.06s both;
 }
 
 .hero h1 {
   margin: 0 0 1rem;
   font-family: var(--font-display);
-  font-size: clamp(2.4rem, 7vw, 4.4rem);
+  font-size: clamp(1.55rem, 3.6vw, 2.15rem);
   font-weight: 500;
-  line-height: 1.25;
-  letter-spacing: 0.04em;
-  animation: rise 1s var(--ease) 0.08s both;
+  line-height: 1.45;
+  letter-spacing: 0.06em;
+  animation: rise 1s var(--ease) 0.1s both;
 }
 
 .lede {

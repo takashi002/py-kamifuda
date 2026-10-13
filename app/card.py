@@ -41,6 +41,7 @@ THEMES: dict[str, dict[str, tuple[int, int, int]]] = {
 
 FONT_CANDIDATES = [
     Path(__file__).resolve().parent / "static" / "fonts" / "NotoSansJP.ttf",
+    Path("/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc"),
     Path("/usr/share/fonts/truetype/droid/DroidSansFallbackFull.ttf"),
     Path("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"),
 ]
@@ -153,6 +154,9 @@ def render_card(req: CardRequest) -> bytes:
     attribution = (req.attribution or "").strip()
     if attribution:
         label = f"— {attribution}"
+        # Prefer a hyphen if the active font cannot draw the em dash.
+        if hasattr(attr_font, "getmask") and attr_font.getmask("—").size[0] <= 1:
+            label = f"- {attribution}"
         draw.text(
             (margin + 36, HEIGHT - margin - 70),
             label,

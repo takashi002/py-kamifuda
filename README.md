@@ -13,7 +13,7 @@ Python / FastAPI / Pillow だけで動き、認証もデータベースも不要
 ## 必要環境
 
 - Python 3.11+
-- 日本語フォント（Linux では `DroidSansFallback` などを自動検出。任意で `app/static/fonts/NotoSansJP.ttf` を置けます）
+- 日本語フォント（推奨: `fonts-noto-cjk`。任意で `app/static/fonts/NotoSansJP.ttf` を置けます。未導入時はシステムフォントへフォールバックします）
 
 ## セットアップ
 
