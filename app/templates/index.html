@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>紙札 Kamifuda — 一言をカードにする</title>
+    <meta
+      name="description"
+      content="短い言葉を、そのまま共有できる画像カードに変換するオープンソースの小さなツール。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="atmosphere" aria-hidden="true"></div>
+
+    <header class="top">
+      <p class="brand">紙札 <span>Kamifuda</span></p>
+      <a class="repo" href="https://github.com/" hidden>GitHub</a>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <h1 id="hero-title">一言を、<br />そのまま渡せる形に。</h1>
+        <p class="lede">
+          メモ、名言、今日の一句。紙札はテキストを共有用の画像カードにします。
+        </p>
+        <div class="cta-row">
+          <a class="btn primary" href="#studio">カードをつくる</a>
+          <a class="btn ghost" href="#about">できること</a>
+        </div>
+      </section>
+
+      <section id="studio" class="studio" aria-labelledby="studio-title">
+        <div class="studio-copy">
+          <h2 id="studio-title">スタジオ</h2>
+          <p>本文を書いてテーマを選ぶと、右側にプレビューが現れます。</p>
+        </div>
+
+        <form id="card-form" class="panel" novalidate>
+          <label class="field">
+            <span>本文</span>
+            <textarea
+              id="text"
+              name="text"
+              maxlength="200"
+              rows="4"
+              required
+              placeholder="例：静かな朝は、言葉の余白がよく似合う。"
+            ></textarea>
+            <small><span id="text-count">0</span>/200</small>
+          </label>
+
+          <label class="field">
+            <span>出典・署名（任意）</span>
+            <input
+              id="attribution"
+              name="attribution"
+              maxlength="60"
+              type="text"
+              placeholder="例：自分の手帳より"
+            />
+          </label>
+
+          <fieldset class="themes">
+            <legend>テーマ</legend>
+            <label class="theme-option">
+              <input type="radio" name="theme" value="mist" checked />
+              <span data-theme="mist">Mist</span>
+            </label>
+            <label class="theme-option">
+              <input type="radio" name="theme" value="ink" />
+              <span data-theme="ink">Ink</span>
+            </label>
+            <label class="theme-option">
+              <input type="radio" name="theme" value="sun" />
+              <span data-theme="sun">Sun</span>
+            </label>
+          </fieldset>
+
+          <div class="actions">
+            <button type="submit" class="btn primary" id="generate-btn">
+              プレビューを更新
+            </button>
+            <button type="button" class="btn ghost" id="download-btn" disabled>
+              PNGを保存
+            </button>
+          </div>
+          <p class="status" id="status" role="status" aria-live="polite"></p>
+        </form>
+
+        <figure class="preview" aria-live="polite">
+          <div class="preview-frame" id="preview-frame">
+            <p class="preview-empty" id="preview-empty">
+              まだカードはありません。<br />左のフォームからつくってください。
+            </p>
+            <img id="preview-image" alt="生成された紙札カード" hidden />
+          </div>
+          <figcaption>1200×630 · SNSやスライドにそのまま貼れます</figcaption>
+        </figure>
+      </section>
+
+      <section id="about" class="about" aria-labelledby="about-title">
+        <h2 id="about-title">公開して使える小さな道具</h2>
+        <p>
+          FastAPI と Pillow だけで動きます。認証もデータベースも要りません。
+          MIT ライセンスなので、フォークして自分のサービスにしても構いません。
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <p>紙札 Kamifuda · MIT License · Python / FastAPI</p>
+    </footer>
+
+    <script src="/static/app.js" defer></script>
+  </body>
+</html>
